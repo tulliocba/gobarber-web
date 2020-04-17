@@ -1,6 +1,9 @@
 import React from 'react';
-import { Route as RouteRC, Redirect } from 'react-router-dom';
+import { Route as RouteRN, Redirect } from 'react-router-dom';
 import Proptypes from 'prop-types';
+
+import DefaultLayout from '../pages/_layout/default';
+import AuthenticatedtLayout from '../pages/_layout/auth';
 
 export default function Route({ component: Component, isPrivate, ...rest }) {
     const signed = true;
@@ -13,7 +16,18 @@ export default function Route({ component: Component, isPrivate, ...rest }) {
         return <Redirect to="/" />;
     }
 
-    return <RouteRC {...rest} component={Component} />;
+    const Layout = signed ? AuthenticatedtLayout : DefaultLayout;
+
+    return (
+        <RouteRN
+            {...rest}
+            render={props => (
+                <Layout>
+                    <Component {...props} />
+                </Layout>
+            )}
+        />
+    );
 }
 
 Route.propTypes = {
