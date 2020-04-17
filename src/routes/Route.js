@@ -2,8 +2,8 @@ import React from 'react';
 import { Route as RouteRN, Redirect } from 'react-router-dom';
 import Proptypes from 'prop-types';
 
-import DefaultLayout from '../pages/_layout/default';
-import AuthenticatedtLayout from '../pages/_layout/auth';
+import DefaultLayout from '~/pages/_layout/default';
+import AuthenticatedtLayout from '~/pages/_layout/auth';
 
 export default function Route({ component: Component, isPrivate, ...rest }) {
     const signed = true;
