@@ -6,7 +6,7 @@ import DefaultLayout from '~/pages/_layout/default';
 import AuthenticatedtLayout from '~/pages/_layout/auth';
 
 export default function Route({ component: Component, isPrivate, ...rest }) {
-    const signed = true;
+    const signed = false;
 
     if (!signed && isPrivate) {
         return <Redirect to="/" />;
@@ -16,7 +16,7 @@ export default function Route({ component: Component, isPrivate, ...rest }) {
         return <Redirect to="/" />;
     }
 
-    const Layout = signed ? AuthenticatedtLayout : DefaultLayout;
+    const Layout = signed ? DefaultLayout : AuthenticatedtLayout;
 
     return (
         <RouteRN
